@@ -9,6 +9,32 @@ source contrib/shell/realpath.bash
 source contrib/shell/git-utils.bash
 
 ################
+# Helper Functions
+################
+
+ask_permission() {
+  local prompt="$1"
+  while true; do
+    read -p "$prompt (y/n): " yn
+    case $yn in
+      [yY1] ) CHOICE=true
+              break;;
+      [nN0] ) CHOICE=false
+              break;;
+      * )  echo "Please answer (y)es or (n)o:";;
+    esac
+  done
+}
+
+grab_macos_sdk() {
+  SDK_PATH="${PWD}/depends/SDKs"
+  [ -d "$SDK_PATH" ] || mkdir $SDK_PATH
+  SDK_DL="https://bitcoincore.org/depends-sources/sdks/${1}"
+  echo "Fetching ${1} macOS SDK from ${SDK_DL}"
+  $(cd $SDK_PATH && curl -L ${SDK_DL} -O && tar -xf $1)
+}
+
+################
 # Required non-builtin commands should be invocable
 ################
 
@@ -21,7 +47,7 @@ check_tools() {
     done
 }
 
-check_tools cat env readlink dirname basename git
+check_tools cat env readlink dirname basename git curl tar
 
 ################
 # We should be at the top directory of the repository

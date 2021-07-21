@@ -15,8 +15,11 @@ When complete, it will have produced `Bitcoin-Core.dmg`.
 Our current macOS SDK
 (`Xcode-12.1-12A7403-extracted-SDK-with-libcxx-headers.tar.gz`) can be
 extracted from
-[Xcode_12.1.xip](https://download.developer.apple.com/Developer_Tools/Xcode_12.1/Xcode_12.1.xip).
-An Apple ID is needed to download this.
+[Xcode_12.1.xip](https://download.developer.apple.com/Developer_Tools/Xcode_12.1/Xcode_12.1.xip). An Apple ID is needed to download this.
+
+Alternatively, after logging in to your Apple Developer account, go to 'Downloads' -> 'More' and look for [`Xcode_12.1`](https://download.developer.apple.com/Developer_Tools/Xcode_12.1/Xcode_12.1.xip).
+
+The `sha256sum` of the SDK archive file should be `612443b1894b39368a596ea1607f30cbb0481ad44d5e29c75edb71a6d2cf050f`.
 
 After Xcode version 7.x, Apple started shipping the `Xcode.app` in a `.xip`
 archive. This makes the SDK less-trivial to extract on non-macOS machines. One

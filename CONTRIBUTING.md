@@ -322,22 +322,28 @@ maintainers take into account the peer review when determining if there is
 consensus to merge a pull request (remember that discussions may have been
 spread out over GitHub, mailing list and IRC discussions).
 
+#### ACK Statement
+The `ACK` statement is the foundation of a peer review; It represents approval,
+or refusal (`NACK`), of the concept or code. A `NACK` needs to include a
+rationale why the change is not worthwhile. NACKs without accompanying reasoning
+may be disregarded.
+
 #### Conceptual Review
 
-A review can be a conceptual review, where the reviewer leaves a comment
+A review can be a conceptual review, where the reviewer leaves a comment.
+The comment should include an ACK statement:
  * `Concept (N)ACK`, meaning "I do (not) agree with the general goal of this pull
    request",
  * `Approach (N)ACK`, meaning `Concept ACK`, but "I do (not) agree with the
    approach of this change".
 
-A `NACK` needs to include a rationale why the change is not worthwhile.
-NACKs without accompanying reasoning may be disregarded.
-
 #### Code Review
 
 After conceptual agreement on the change, code review can be provided. A review
-begins with `ACK BRANCH_COMMIT`, where `BRANCH_COMMIT` is the top of the PR
-branch, followed by a description of how the reviewer did the review. The
+begins with an `ACK BRANCH_COMMIT` statement, where `BRANCH_COMMIT` is the top
+commit of the PR branch.
+
+The ACK statement is followed by a description of how the reviewer did the review. The
 following language is used within pull request comments:
 
   - "I have tested the code", involving change-specific manual testing in
@@ -346,6 +352,12 @@ following language is used within pull request comments:
   - "I have not tested the code, but I have reviewed it and it looks
     OK, I agree it can be merged";
   - A "nit" refers to a trivial, often non-blocking issue.
+
+The following are variations to the ACK statement that convey some meaning as shorthand:
+  - `tACK BRANCH_COMMIT`, meaning "I have tested the code and approve the changes".
+  - `utACK BRANCH_COMMIT`, meaning "I have not tested the code, but I approve the changes".
+  - `crACK BRANCH_COMMIT`, meaning "I have only reviewed the code and approve the changes".
+
 
 Project maintainers reserve the right to weigh the opinions of peer reviewers
 using common sense judgement and may also weigh based on merit. Reviewers that
